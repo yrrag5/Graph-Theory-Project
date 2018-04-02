@@ -1,5 +1,9 @@
+// Graph Theory Project
+// Author: Garry Cummins
+
 package main
 
+// Imports 
 import(
 	"fmt"
 )
