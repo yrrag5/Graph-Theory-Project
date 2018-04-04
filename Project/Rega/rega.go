@@ -164,7 +164,7 @@ func pomatch(po string, s string) bool{
 }
 
 func main() {
-	// Testing a serious a postmatch regurlar expressions 
+	// Testing a series a postmatch regurlar expressions 
 
 	// Returns true
 	fmt.Println(pomatch("ab.c*|", "ccc"))
