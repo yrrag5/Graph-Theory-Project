@@ -63,6 +63,4 @@ func main() {
 
 	fmt.Println("Infix: ", "a.(b.b)+.c")
 	fmt.Println("Postfix: " + intopost("a.(b.b)+.c"))
-
-	
 }
