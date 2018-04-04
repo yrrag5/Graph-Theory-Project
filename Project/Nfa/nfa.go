@@ -1,6 +1,10 @@
 // Graph Theory Project
 // Author: Garry Cummins
 
+/* References: https://web.microsoftstream.com/video/68a288f5-4688-4b3a-980e-1fcd5dd2a53b
+			   http://www.cs.may.ie/staff/jpower/Courses/Previous/parsing/node5.html
+*/
+
 package main
 
 // Imports 

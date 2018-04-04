@@ -1,6 +1,9 @@
 // Graph Theory Project 
 // Author: Garry Cummins
 
+/* References: https://web.microsoftstream.com/video/9d83a3f3-bc4f-4bda-95cc-b21c8e67675e
+			   https://brilliant.org/wiki/shunting-yard-algorithm/
+*/
 package main
 
 // Imports

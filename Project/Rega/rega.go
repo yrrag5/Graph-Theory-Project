@@ -1,6 +1,10 @@
 // Graph Theory Project
 // Author: Garry Cummins
 
+/* References: https://web.microsoftstream.com/video/bad665ee-3417-4350-9d31-6db35cf5f80d
+			   http://www.perlmonks.org/?node_id=805819	
+*/
+
 package main
 
 // Imports 
