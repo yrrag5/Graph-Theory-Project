@@ -1,5 +1,6 @@
 // Graph Theory Project
 // Author: Garry Cummins
+// ID: G00335806
 
 /* References: https://web.microsoftstream.com/video/bad665ee-3417-4350-9d31-6db35cf5f80d
 			   http://www.perlmonks.org/?node_id=805819	
@@ -163,15 +164,102 @@ func pomatch(po string, s string) bool{
 	return ismatch
 }
 
-func main() {
-	// Testing a series a postmatch regurlar expressions 
+func intopost(infix string) string {
+	// The sequence order of characters 
+	specials := map[rune]int{'*': 10, '.': 9, '|': 8, '+': 7, '?': 6}
+	
+	// Rune is used as a character
+	pofix, s := []rune{}, []rune{}
+    
+	// The range is used to convert strings to a array of runes
+	for _, r:= range infix {
+		switch {
+			// ( characters are added to the stack 
+			case r == '(':
+				s = append(s,r);
+			// ) is added from the character stack to the postfix	
+			case r == ')':
+				for s[len(s)-1] != '(' {
+					pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
+				}
+				s = s[:len(s)-1]
+			case specials[r] > 0: // Characters after () will be added to the stack
+				for len(s) > 0 && specials[r] <= specials[s[len(s)-1]] {
+					// Finds all elements bar the last 
+					pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
+				}
+				s = append(s, r)
+			default:
+				pofix = append(pofix, r)
+		}// switch
+	}// for
+	
+	// Characters still left in the stack will be appended to postfix 
+	// to clear the stack
+	for len(s) > 0 {
+		pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
+	}
 
+	return string(pofix)
+}
+
+func main() {
+	// Testing a series of postmatch regurlar expressions 
+	fmt.Println()
+	// ab.c
+	fmt.Println("Using regex ab.c*|")
+	
+	fmt.Println("Input = ccc")
 	// Returns true
 	fmt.Println(pomatch("ab.c*|", "ccc"))
+	
+	fmt.Println("Input = abd")
+	//Returns false
+	fmt.Println(pomatch("ab.c*|", "abd"))
+	fmt.Println()
+    /////////////////////////////////////
 
+	// bcd|.c*
+	fmt.Println("Using regex bcd|.c*")
+
+	fmt.Println("Input = bc")
+	// Returns true
+	fmt.Println(pomatch("bcd|.c*|", "bc"))
+
+	
+	fmt.Println("Input = ac")
 	// Returns false
-	fmt.Println(pomatch("ab.c*|", "abc"))
+	fmt.Println(pomatch("bcd|.c*|", "ac"))
+	fmt.Println()
+	///////////////////////////////////////
+	
+	// xyz|.z*|
+	fmt.Println("Using regex xyz|.z*|")
 
-	// Returns true 
-	fmt.Println(pomatch("ab.c*|", "c"))
-}
+	fmt.Println("Input = x")
+	// Returns false 
+	fmt.Println(pomatch("xyz|.z*|", "x"))
+
+	
+	fmt.Println("Input = zzz")
+	// Returns true
+	fmt.Println(pomatch("xyz|.z*|", "zzz"))
+	fmt.Println()
+	///////////////////////////////////////
+
+	// User Input
+	fmt.Println("////// User Input //////") 
+	fmt.Println()
+
+	//Postfix
+	rVal := intopost("fg.h*|")
+	fmt.Println("Postfix value: " , rVal)
+	
+	var uInput string
+	fmt.Println("Enter regular expression you wish to match with fgh*.|: ")
+	fmt.Scanln(&uInput)
+
+	mVal := pomatch(rVal, uInput)
+	fmt.Println("The match is:", mVal)
+	
+}// Main
