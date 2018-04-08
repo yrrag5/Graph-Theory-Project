@@ -22,10 +22,16 @@ Thompsons construction creates the regex and uses structs (nfa and state) that w
 
 # References 
 https://web.microsoftstream.com/video/9d83a3f3-bc4f-4bda-95cc-b21c8e67675e
+
 https://brilliant.org/wiki/shunting-yard-algorithm/
+
 https://web.microsoftstream.com/video/68a288f5-4688-4b3a-980e-1fcd5dd2a53b
+
 http://www.cs.may.ie/staff/jpower/Courses/Previous/parsing/node5.html
+
 https://web.microsoftstream.com/video/bad665ee-3417-4350-9d31-6db35cf5f80d
+
 http://www.perlmonks.org/?node_id=805819	
+
 http://rextester.com/tester
 
